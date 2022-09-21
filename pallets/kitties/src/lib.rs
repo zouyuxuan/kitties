@@ -1,6 +1,12 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 pub use pallet::*;
 
+#[cfg(test)]
+mod tests;
+
+#[cfg(test)]
+mod mock;
+
 #[frame_support::pallet]
 pub mod pallet {
 	use frame_support::pallet_prelude::*;
@@ -73,7 +79,9 @@ pub mod pallet {
 		NotOwner,
 		SameKittyId,
 		MaxKittyOwned,
-        TokenNotEnough
+        TokenNotEnough,
+		ExceedMaxKittyOwned,
+		KittiesCountOverflow
 	}
 
 	// 设置对外调用方法
